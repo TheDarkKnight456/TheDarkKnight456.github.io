@@ -1,17 +1,85 @@
+<!DOCTYPE html>
 <html>
-    <head>
-
-    </head>
+<head>
     <link rel="shortcut icon" href="batman.png" type="image/x-icon">
-    <link rel="Stylesheet" href="myStyle.css">
-    <p><a href="https://www.Youtube.com/"><img src="https://www.tutorialspoint.com/assets/questions/media/426142-1668760872.png" style="width:50px;height:50px;"></a></p>
-    <body>
-      <a href="index.html"style="text-decoration: none;">home</a>
-      <a href="page2.html"style="text-decoration: none;">Page 2</a>
-      <a href="page3.html"style="text-decoration: none;">page 3</a>
-      <a href="page4.html"style="text-decoration: none;">page 4</a>
-      <a href="page5.html"style="text-decoration: none;">page 5</a>
-        <h1>HOME</h1>
+    <link rel="stylesheet" href="myStyle.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            border: 2px solid #333; /* Add a border to the body */
+        }
 
-    </body>
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        .pro-image {
+            display: block;
+            margin: 0 auto;
+            max-width: 200px;
+            height: auto;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="page2.html">Page 2</a>
+            <a href="page3.html">Page 3</a>
+            <a href="page4.html">Page 4</a>
+            <a href="page5.html">Page 5</a>
+        </nav>
+        <a href="https://www.youtube.com/"><img src="https://www.tutorialspoint.com/assets/questions/media/426142-1668760872.png" alt="YouTube"></a>
+    </header>
+    <h1>HOME</h1>
+    <img class="pro-image" src="your-image.png" alt="Pro Image">
+
+    <script>
+        // Generate a random number between 1 and 100
+        const targetNumber = Math.floor(Math.random() * 100) + 1;
+        let tries = 0;
+        const maxTries = 5;
+
+        // Function to check if the user's guess is correct
+        function checkGuess() {
+            const userInput = parseInt(prompt("Enter your guess (between 1 and 100):"));
+            tries++;
+
+            if (userInput === targetNumber) {
+                alert("Congratulations! You guessed the correct number in " + tries + " tries!");
+            } else if (tries === maxTries) {
+                alert("Sorry, you have reached the maximum number of tries. The correct number was " + targetNumber + ".");
+            } else if (userInput < targetNumber) {
+                alert("Too low! Try a higher number.");
+                checkGuess(); // Call the function recursively for the next guess
+            } else {
+                alert("Too high! Try a lower number.");
+                checkGuess(); // Call the function recursively for the next guess
+            }
+        }
+
+        // Call the checkGuess function when the page loads
+        window.onload = checkGuess;
+    </script>
+</body>
 </html>
